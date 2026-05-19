@@ -1,0 +1,61 @@
+{
+    "uart": {
+        "device": "/dev/ttyS3",
+        "baudrate": 115200,
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1
+    },
+    "control": {
+        "algorithm": "expert_rule",
+
+        "soil": {
+            "target_midline": 45.0,
+            "lower_bound": 35.0,
+            "upper_bound": 55.0,
+            "emergency": 15.0
+        },
+
+        "vpd": {
+            "unlock_threshold_kpa": 0.8,
+            "stress_threshold_kpa": 2.0,
+            "humidity_lock_kpa": 0.3
+        },
+
+        "noon": {
+            "temp_threshold_c": 30.0,
+            "soil_temp_threshold_c": 28.0
+        },
+
+        "light": {
+            "active_min_lux": 1000.0,
+            "dark_max_lux": 200.0
+        },
+
+        "sensor_buffer_ms": 60000,
+
+        "cooldown": {
+            "cooldown_seconds": 600
+        },
+
+        "time_windows": {
+            "dawn_start_h": 6,
+            "forenoon_start_h": 8,
+            "noon_start_h": 12,
+            "afternoon_start_h": 14,
+            "evening_start_h": 17,
+            "night_start_h": 19
+        },
+
+        "model_path": ""
+    },
+    "csv": {
+        "output_dir": "data",
+        "flush_interval_ms": 600000,
+        "buffer_max_rows": 100
+    },
+    "log": {
+        "level": "info",
+        "file": ""
+    }
+}

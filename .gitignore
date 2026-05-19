@@ -1,0 +1,22 @@
+# Build outputs
+build/
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+
+# IDE
+.settings/
+.cache/
+.clangd
+.mxproject
+compile_commands.json
+
+# Claude local settings
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
