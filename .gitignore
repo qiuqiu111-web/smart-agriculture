@@ -17,6 +17,9 @@ compile_commands.json
 # Claude local settings
 .claude/
 
+# VSCode
+.vscode/
+
 # OS files
 .DS_Store
 Thumbs.db
