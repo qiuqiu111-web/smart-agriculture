@@ -1,0 +1,7 @@
+build
+mx.scratch
+.settings
+.vscode
+.cache
+.clangd
+compile_commands.json

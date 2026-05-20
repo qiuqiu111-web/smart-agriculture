@@ -7,7 +7,7 @@
 #include "func_config.h"
 
 #define SOIL_HUMIDITY_MAX_RETRY_COUNT  3U
-#define SOIL_HUMIDITY_SAMPLE_COUNT     5U   // 多次采样取平均的样本数
+#define SOIL_HUMIDITY_SAMPLE_COUNT     15U   // 多次采样取平均的样本数
 
 typedef enum {
     SOIL_HUMIDITY_READY=0,   // 准备就绪，等待测量

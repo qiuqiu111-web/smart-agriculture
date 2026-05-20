@@ -3,7 +3,6 @@
 #include "DHT22.h"
 #include "SoilHumidity.h"
 #include "GY30.h"
-#include "DS3231.h"
 #include "AHT30.h"
 
 int ds18b20_get_adapter(void *handle, Sensors_Data *data) {

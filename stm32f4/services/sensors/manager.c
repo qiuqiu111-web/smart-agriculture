@@ -4,7 +4,6 @@
 
 // 此处添加其他传感器的头文件-----------------------------------------
 #include "i2c.h" 
-#include "DS3231.h" // 时钟传感器，获取时间和温度，I2C协议
 #include "DHT22.h"  // 空气温湿度传感器，获取温度和湿度，单总线协议
 #include "DS18B20.h"    // 土壤温度传感器，获取土壤温度，单总线协议
 #include "SoilHumidity.h" // 土壤湿度传感器，获取土壤湿度，ADC协议
@@ -29,13 +28,6 @@ typedef struct {
 } Sensor_Config;
 
 // 传感器操作函数定义-----------------------------------------
-static const Sensors_Ops ds3231_ops = {
-    .init = (int (*)(void *))ds3231_init,
-    .run = (void (*)(void *))ds3231_run,
-    .if_ready = (int (*)(void *))ds3231_ready,
-    .get_data = ds3231_get_adapter, // 适配器函数
-};
-
 static const Sensors_Ops dht22_ops = {
     .init = (int (*)(void *))dht22_init,
     .run = (void (*)(void *))dht22_run,
@@ -77,12 +69,6 @@ static int _add_sensor(Sensors_Manager *manager, eSensorsType type, void *handle
 
     // 根据传感器类型设置对应的操作函数
     switch (type) {
-        case SENSOR_DS3231:
-            manager->sensors[manager->sensor_count] = (Sensor_Example) {
-                .type = SENSOR_DS3231,
-                .handle = (DS3231_Handle*)handle,
-                .ops = &ds3231_ops,
-            };
             break;
         case SENSOR_DHT22:
             manager->sensors[manager->sensor_count] = (Sensor_Example) {
@@ -138,8 +124,8 @@ int Sensors_Manager_Init(Sensors_Manager *manager) {
     };
 
     // 配置各个传感器的GPIO和I2C等硬件参数（需用户根据实际情况修改）-----------------
-    ds18b20_handle.gpio.port = GPIOC;
-    ds18b20_handle.gpio.pin = GPIO_PIN_12;
+    ds18b20_handle.gpio.port = GPIOD;
+    ds18b20_handle.gpio.pin = GPIO_PIN_4;
 
     soil_humidity_handle.hadc = &hadc1;
 
