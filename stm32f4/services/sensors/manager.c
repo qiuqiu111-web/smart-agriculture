@@ -127,7 +127,7 @@ int Sensors_Manager_Init(Sensors_Manager *manager) {
     ds18b20_handle.gpio.port = GPIOD;
     ds18b20_handle.gpio.pin = GPIO_PIN_4;
 
-    soil_humidity_handle.hadc = &hadc1;
+    soil_humidity_handle.hadc = &hadc2;
 
     gy30_handle.i2c.hi2c = &hi2c2;
     gy30_handle.i2c.dev_addr = GY30_I2C_ADDR1<<1;

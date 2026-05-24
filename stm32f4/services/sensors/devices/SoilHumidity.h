@@ -8,12 +8,14 @@
 
 #define SOIL_HUMIDITY_MAX_RETRY_COUNT  3U
 #define SOIL_HUMIDITY_SAMPLE_COUNT     15U   // 多次采样取平均的样本数
+#define SOIL_HUMIDITY_WET           0.85f
+#define SOIL_HUMIDITY_DRY           2.7f
+
 
 typedef enum {
-    SOIL_HUMIDITY_READY=0,   // 准备就绪，等待测量
-    SOIL_HUMIDITY_CALIBRATE,  // 校准（启动ADC转换）
-    SOIL_HUMIDITY_READ,       // 读取ADC数据并计算湿度
-    SOIL_HUMIDITY_COMPLETE,   // 数据就绪
+    SOIL_HUMIDITY_CALIBRATE=0, // 启动ADC转换并采样
+    SOIL_HUMIDITY_READ,        // 读取ADC数据并计算湿度（保留）
+    SOIL_HUMIDITY_COMPLETE,    // 数据就绪
 } eSoilHumidity_status;
 
 typedef enum {
@@ -27,8 +29,8 @@ typedef struct {
     ADC_HandleTypeDef *hadc;       // ADC句柄指针
     eSoilHumidity_status status;   // 当前状态
     uint16_t raw_data;             // 原始ADC值
-    uint16_t calib_dry;            // 干燥校准值（传感器在空气中）
-    uint16_t calib_wet;            // 湿润校准值（传感器在水中）
+    float calib_dry;               // 干燥校准电压（传感器在空气中）
+    float calib_wet;               // 湿润校准电压（传感器在水中）
     uint8_t calibrated;            // 校准完成标志（0:未校准, 1:已校准）
     uint8_t data_flag;             // 数据准备好标志（0:无数据, 1:数据就绪）
     uint8_t retry_count;           // 重试次数
@@ -48,9 +50,9 @@ int soil_humidity_get(SoilHumidity_Handle *handle, float *humidity);
 // 数据就绪检查，返回 0 表示数据准备好
 int soil_humidity_ready(SoilHumidity_Handle *handle);
 
-// 设置校准值（需用户自行标定干燥和湿润时的ADC值）
-// dry - 传感器在干燥空气中的ADC读数
-// wet - 传感器完全浸入水中的ADC读数
-int soil_humidity_set_calib(SoilHumidity_Handle *handle, uint16_t dry, uint16_t wet);
+// 设置校准电压值（需用户自行标定）
+// dry - 传感器在干燥空气中的电压（V）
+// wet - 传感器完全浸入水中的电压（V）
+int soil_humidity_set_calib(SoilHumidity_Handle *handle, float dry, float wet);
 
 #endif // SOIL_HUMIDITY_H
