@@ -30,11 +30,6 @@ struct ExpertRuleConfig {
     // 正午高温锁
     float noonTempThreshold      = 30.0f;  // 正午气温超过此值 → 锁死
     float noonSoilTempThreshold  = 28.0f;  // 正午地温超过此值 → 锁死（炸根直接原因）
-
-    // 光照推断
-    float lightActiveMin       = 1000.0f; // 光合活跃最低照度 (lux)
-    float lightDarkMax         = 200.0f;  // 认定黑暗的最高照度 (lux)
-
     // 防重入
     int   cooldownSeconds     = 600;    // 浇水后最少间隔秒数（默认10分钟）
 
@@ -55,7 +50,7 @@ public:
 
 private:
     ExpertRuleConfig cfg_;
-    std::chrono::steady_clock::time_point lastWaterTime_ = std::chrono::steady_clock::time_point::min();
+    std::chrono::steady_clock::time_point lastWaterTime_ = std::chrono::steady_clock::now();
 };
 
 // ========== ML 推理控制器（v2，当前为桩） ==========

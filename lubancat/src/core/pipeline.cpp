@@ -155,7 +155,6 @@ void Pipeline::processLoop() {
         // AI 训练字段
         row.calculatedVpd   = decision.features.vpd_kPa;
         row.timeWindow      = decision.features.timeWindow;
-        row.lightFlag       = decision.features.lightFlag;
         row.soilBuffer      = decision.features.soilBuffer;
         row.ruleTriggered   = decision.ruleTriggered;
         row.actionType      = decision.actionType;

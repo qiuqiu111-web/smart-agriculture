@@ -37,21 +37,6 @@ int FeatureEngine::classifyTimeWindow(int hours, int minutes,
     return TimeWindowCode::Evening;
 }
 
-// ========== 光合活性推断 ==========
-bool FeatureEngine::inferLightFlag(int timeWindow, float illuminance,
-                                    float lightActiveMin, float lightDarkMax) {
-    if (timeWindow == TimeWindowCode::Night)
-        return false;
-
-    if (illuminance > lightActiveMin)
-        return true;
-
-    if (illuminance < lightDarkMax)
-        return false;
-
-    return true;
-}
-
 // ========== 土壤缓冲差 ==========
 float FeatureEngine::calcSoilBuffer(float soilHumidity, float targetMidline) {
     return soilHumidity - targetMidline;
@@ -68,8 +53,6 @@ FeatureSnapshot FeatureEngine::computeAll(const SensorData& sensor,
         cfg.dawnStart, cfg.forenoonStart,
         cfg.noonStart, cfg.afternoonStart,
         cfg.eveningStart, cfg.nightStart);
-    snap.lightFlag  = inferLightFlag(snap.timeWindow, sensor.illuminance,
-                                     cfg.lightActiveMin, cfg.lightDarkMax);
     snap.soilBuffer = calcSoilBuffer(sensor.soilHumidity, cfg.soilTargetMidline);
     return snap;
 }

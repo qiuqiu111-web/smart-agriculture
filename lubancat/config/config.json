@@ -10,10 +10,10 @@
         "algorithm": "expert_rule",
 
         "soil": {
-            "target_midline": 45.0,
-            "lower_bound": 35.0,
-            "upper_bound": 55.0,
-            "emergency": 15.0
+            "target_midline": 68.0,
+            "lower_bound": 60.0,
+            "upper_bound": 85.0,
+            "emergency": 20.0
         },
 
         "vpd": {
@@ -25,11 +25,6 @@
         "noon": {
             "temp_threshold_c": 30.0,
             "soil_temp_threshold_c": 28.0
-        },
-
-        "light": {
-            "active_min_lux": 1000.0,
-            "dark_max_lux": 200.0
         },
 
         "sensor_buffer_ms": 60000,

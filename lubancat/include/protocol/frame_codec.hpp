@@ -54,7 +54,6 @@ constexpr uint8_t CMD_PUMP   = 0x01;
 struct FeatureSnapshot {
     float vpd_kPa     = 0.0f;   // 饱和水汽压差 (kPa)
     int   timeWindow  = 0;      // 时段枚举，见 TimeWindow 常量
-    bool  lightFlag   = false;  // 光合活性推断
     float soilBuffer  = 0.0f;   // 当前湿度 - 目标中线
 };
 
@@ -110,7 +109,6 @@ struct CsvRow {
     // 以下为 AI 训练扩展字段
     float calculatedVpd  = 0.0f;   // 计算得到的 VPD
     int   timeWindow     = 0;      // 时段分类
-    bool  lightFlag      = false;  // 光合活性推断
     float soilBuffer     = 0.0f;   // 土壤缓冲差
     int   ruleTriggered  = 0;      // 命中规则
     int   actionType     = 0;      // 动作类型

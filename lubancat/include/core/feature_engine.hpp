@@ -17,11 +17,6 @@ public:
                                   int dawnStart, int forenoonStart,
                                   int noonStart, int afternoonStart,
                                   int eveningStart, int nightStart);
-
-    // 光合活性推断（时间 + 光照联合判定）
-    static bool inferLightFlag(int timeWindow, float illuminance,
-                               float lightActiveMin, float lightDarkMax);
-
     // 土壤缓冲差 = 当前湿度 - 目标中线
     static float calcSoilBuffer(float soilHumidity, float targetMidline);
 

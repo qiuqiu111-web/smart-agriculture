@@ -61,7 +61,6 @@ void CsvWriter::flush() {
              // 特征工程值
              << row.calculatedVpd  << ','
              << row.timeWindow     << ','
-             << row.lightFlag      << ','
              << row.soilBuffer     << ','
              // 决策过程
              << row.ruleTriggered  << ','
@@ -104,7 +103,7 @@ void CsvWriter::ensureHeader() {
             ofs_ << "year,month,date,hours,minutes,seconds,"
                     "temperature,humidity,soil_temperature,soil_humidity,illuminance,"
                     "pump,"
-                    "calculated_vpd,time_window,light_flag,soil_buffer,"
+                    "calculated_vpd,time_window,soil_buffer,"
                     "rule_triggered,action_type,"
                     "data_reliability\n";
             ofs_.flush();

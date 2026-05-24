@@ -90,11 +90,6 @@ int main(int argc, char* argv[]) {
         ruleCfg.noonSoilTempThreshold = static_cast<float>(
             cfg.getDouble("control.noon.soil_temp_threshold_c", 28.0));
 
-        ruleCfg.lightActiveMin = static_cast<float>(
-            cfg.getDouble("control.light.active_min_lux", 1000.0));
-        ruleCfg.lightDarkMax = static_cast<float>(
-            cfg.getDouble("control.light.dark_max_lux", 200.0));
-
         ruleCfg.cooldownSeconds = cfg.getInt("control.cooldown.cooldown_seconds", 600);
 
         ruleCfg.dawnStart      = cfg.getInt("control.time_windows.dawn_start_h", 6);

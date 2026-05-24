@@ -12,7 +12,7 @@ void ControlCommandTask(void const *argument) {
             if (command.command_id == 0x01 && command.payload == 1) { 
                 // 进行一次脉冲浇水，减少决策端的不确定
                 Pump_On(water_pump);
-                vTaskDelay(pdMS_TO_TICKS(4000)); // 浇水持续4秒
+                vTaskDelay(pdMS_TO_TICKS(5000)); // 浇水持续5秒
                 Pump_Off(water_pump);
             }
         }
