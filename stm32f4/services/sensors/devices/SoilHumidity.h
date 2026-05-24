@@ -9,7 +9,7 @@
 #define SOIL_HUMIDITY_MAX_RETRY_COUNT  3U
 #define SOIL_HUMIDITY_SAMPLE_COUNT     15U   // 多次采样取平均的样本数
 #define SOIL_HUMIDITY_WET           0.85f
-#define SOIL_HUMIDITY_DRY           2.7f
+#define SOIL_HUMIDITY_DRY           2.5f
 
 
 typedef enum {
