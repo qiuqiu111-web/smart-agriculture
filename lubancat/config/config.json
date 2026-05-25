@@ -11,26 +11,26 @@
 
         "soil": {
             "target_midline": 68.0,
-            "lower_bound": 60.0,
-            "upper_bound": 85.0,
+            "lower_bound": 55.0,
+            "upper_bound": 80.0,
             "emergency": 20.0
         },
 
         "vpd": {
-            "unlock_threshold_kpa": 0.8,
-            "stress_threshold_kpa": 2.0,
+            "unlock_threshold_kpa": 0.9,
+            "stress_threshold_kpa": 1.8,
             "humidity_lock_kpa": 0.3
         },
 
         "noon": {
-            "temp_threshold_c": 30.0,
-            "soil_temp_threshold_c": 28.0
+            "temp_threshold_c": 34.0,
+            "soil_temp_threshold_c": 30.0
         },
 
         "sensor_buffer_ms": 60000,
 
         "cooldown": {
-            "cooldown_seconds": 600
+            "cooldown_seconds": 1200
         },
 
         "time_windows": {
@@ -47,7 +47,7 @@
     "csv": {
         "output_dir": "data",
         "flush_interval_ms": 600000,
-        "buffer_max_rows": 100
+        "buffer_max_rows": 20
     },
     "log": {
         "level": "info",
